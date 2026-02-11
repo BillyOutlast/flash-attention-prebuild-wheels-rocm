@@ -275,25 +275,25 @@ def main():
     print(
         json.dumps(
             {
-                "linux": False,
+                #"linux": False,
                 # "linux": LINUX_MATRIX,
                 #
                 # "linux_arm64": False,
-                "linux_arm64": LINUX_ARM64_MATRIX,
+                #"linux_arm64": LINUX_ARM64_MATRIX,
                 #
                 # "linux_self_hosted": False,
-                "linux_self_hosted": LINUX_SELF_HOSTED_MATRIX,
+                #"linux_self_hosted": LINUX_SELF_HOSTED_MATRIX,
                 #
-                "linux_arm64_self_hosted": False,
+                #"linux_arm64_self_hosted": False,
                 # "linux_arm64_self_hosted": LINUX_ARM64_SELF_HOSTED_MATRIX,
                 #
-                "windows": False,
+                #"windows": False,
                 # "windows": WINDOWS_MATRIX,
                 #
-                "windows_self_hosted": False,
+                #"windows_self_hosted": False,
                 # "windows_self_hosted": WINDOWS_SELF_HOSTED_MATRIX,
                 #
-                "windows_code_build": False,
+               # "windows_code_build": False,
                 # "windows_code_build": WINDOWS_CODEBUILD_MATRIX,
                 #
                 #"rocm": False,
