@@ -124,6 +124,29 @@ jobs:
     secrets: inherit
 
   # #########################################################
+  # ROCm
+  # #########################################################
+
+  build_wheels_rocm:
+    name: Build ROCm
+    needs: [create_releases, create_matrix]
+    if: ${{ fromjson(needs.create_matrix.outputs.matrix).rocm }}
+    strategy:
+      fail-fast: false
+      matrix:
+        flash-attn-version: ${{ fromjson(needs.create_matrix.outputs.matrix).rocm.flash-attn-version }}
+        python-version: ${{ fromjson(needs.create_matrix.outputs.matrix).rocm.python-version }}
+        torch-version: ${{ fromjson(needs.create_matrix.outputs.matrix).rocm.torch-version }}
+        rocm-version: ${{ fromjson(needs.create_matrix.outputs.matrix).rocm.rocm-version }}
+    uses: ./.github/workflows/_build_rocm.yml
+    with:
+      flash-attn-version: ${{ matrix.flash-attn-version }}
+      python-version: ${{ matrix.python-version }}
+      torch-version: ${{ matrix.torch-version }}
+      rocm-version: ${{ matrix.rocm-version }}
+    secrets: inherit
+
+  # #########################################################
   # Windows
   # #########################################################
 
@@ -199,6 +222,7 @@ jobs:
       - build_wheels_linux_arm64
       - build_wheels_linux_self_hosted
       - build_wheels_linux_arm64_self_hosted
+      - build_wheels_rocm
       - build_wheels_windows
       - build_wheels_windows_code_build
       - build_wheels_windows_self_hosted
@@ -228,6 +252,7 @@ jobs:
       - build_wheels_linux
       - build_wheels_linux_arm64
       - build_wheels_linux_self_hosted
+      - build_wheels_rocm
       - build_wheels_linux_arm64_self_hosted
       - build_wheels_windows
       - build_wheels_windows_code_build

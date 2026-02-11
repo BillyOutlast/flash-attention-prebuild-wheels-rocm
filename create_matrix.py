@@ -245,6 +245,31 @@ WINDOWS_SELF_HOSTED_MATRIX = {
     ],
 }
 
+ROCM_MATRIX = {
+    "flash-attn-version": [
+        #"2.6.3",
+        #"2.7.4",
+        "2.8.3",
+    ],
+    "python-version": [
+        #"3.10",
+       # "3.11",
+        #"3.12",
+        "3.13",
+        "3.14",
+    ],
+    "torch-version": [
+#        "2.5.1",
+#        "2.6.0",
+#        "2.7.1",
+        "2.9.1",
+    ],
+    "rocm-version": [
+        "7.1",
+        "7.2",
+    ],
+}
+
 
 def main():
     print(
@@ -270,6 +295,9 @@ def main():
                 #
                 "windows_code_build": False,
                 # "windows_code_build": WINDOWS_CODEBUILD_MATRIX,
+                #
+                #"rocm": False,
+                "rocm": ROCM_MATRIX,
                 #
                 "exclude": EXCLUDE,
             }
