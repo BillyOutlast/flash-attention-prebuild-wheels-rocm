@@ -160,9 +160,10 @@ python -c "import flash_attn_2_cuda; print('Flash Attention ROCm loaded successf
 
 ## Docker Container Details
 
-The workflow uses official ROCm PyTorch containers:
+The workflow uses official ROCm PyTorch containers that match the published tags, for example:
 ```
-rocm/pytorch:rocm{version}_ubuntu22.04_py3.10_pytorch_2.1.2
+rocm/pytorch:rocm7.1.1_ubuntu24.04_py3.12_pytorch_release_2.9.1
+rocm/pytorch:rocm7.2_ubuntu22.04_py3.10_pytorch_release_2.9.1
 ```
 
 Device passthrough options:
