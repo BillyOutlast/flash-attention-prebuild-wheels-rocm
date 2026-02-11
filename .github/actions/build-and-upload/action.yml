@@ -37,6 +37,7 @@ runs:
     - name: Install uv
       uses: astral-sh/setup-uv@v7
 
+
     - name: Install Python
       shell: bash
       run: |
@@ -49,6 +50,15 @@ runs:
       uses: mjun0812/setup-cuda@v1
       with:
         version: ${{ inputs.cuda-version }}
+
+    - name: Free disk space on runner
+      shell: bash
+      run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/local/.ghcup || true
+          df -h
 
     - name: Build wheels
       id: build_wheels
